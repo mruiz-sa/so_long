@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   error_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 10:24:27 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/14 12:36:37 by mruiz-sa         ###   ########.fr       */
+/*   Created: 2022/07/14 12:27:00 by mruiz-sa          #+#    #+#             */
+/*   Updated: 2022/07/14 12:27:07 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-
-# include "minilibx/mlx.h"
-# include<stdlib.h>
-
-typedef struct s_map{
-	char	**ber;
-	int		width;
-	int		height;
-}	t_map;
-
-typedef struct s_game {
-	void	*mlx;
-	t_map	*map;
-}	t_game;
-
-#endif
+void	error_list(int code)
+{
+	if (code == 1)
+	{
+		printf("Error\nExpected *.ber");
+		exit(0);
+	}
+}

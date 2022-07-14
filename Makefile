@@ -6,12 +6,13 @@
 #    By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/31 19:11:27 by mruiz-sa          #+#    #+#              #
-#    Updated: 2022/07/13 11:18:25 by mruiz-sa         ###   ########.fr        #
+#    Updated: 2022/07/14 12:28:13 by mruiz-sa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-SRC = so_long.c
+SRC = so_long.c \
+		error_list.c
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g3
 LINKS = -Lminilibx -lmlx -framework OpenGL -framework AppKit
