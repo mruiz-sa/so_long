@@ -20,4 +20,9 @@ void	error_list(int code)
 		write(1, "Error\nExpected *.ber\n", 21);
 		exit(0);
 	}
+	if (code == 2)
+	{
+		write(1, "Error\nWrong map format\n", 23);
+		exit(0);
+	}
 }

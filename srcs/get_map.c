@@ -12,21 +12,68 @@
 
 #include "so_long.h"
 #include<fcntl.h>
+#include<stdlib.h>
 
-int	chars_map_checker(t_game *game)
+void	free_map(t_game	*game)
 {
-	
+	int	i;
+
+	i = 0;
+	while ((game->map)->ber[i])
+	{
+		free((game->map)->ber[i]);
+		i++;
+	}
+	free((game->map)->ber);
+	free(game->map);
+}
+
+int	chars_map_checker(char *str, int row, int width)
+{
+	int		i;
+	int		player_nbr;
+
+	i = 0;
+	player_nbr = 0;
+	while (str[i])
+	{
+		if ((row == 0 || row == 2) && str[i] != '1')
+			return (1);
+		if (row == 1 && ((str[0] != '1') || (str[width - 1] != '1')))
+			return (1);
+		if (str[i] != '0' || str[i] != '1' || str[i] != 'C' || str[i] != 'E' ||
+			str[i] != 'P' || str[i] != 'T')
+			return (1);
+		if (str[i] == 'P')
+			player_nbr++;
+		if (player_nbr == 2)
+			return (1);
+		i++;
+	}
+	if (i != width)
+		return (1);
+	return (0);
 }
 
 int	map_checker(t_game *game)
 {
+	int	row;
+
 	(game->map)->width = ft_strlen((game->map)->ber[0]);
 	(game->map)->height = 0;
-	while (game->map->ber[(game->map)->height])
+	while ((game->map)->ber[(game->map)->height])
+	{
+		if ((game->map)->height == 0)
+			row = 0;
+		else if ((game->map)->ber[(game->map)->height + 1])
+			row = 1;
+		else
+			row = 2;
+		if (chars_map_checker((game->map)->ber[(game->map)->height], row, (game->map)->width) == 1)
+			return (1);
 		(game->map)->height++;
+	}
 	if ((game->map)->height <= 2)
-		return (1);
-	if (chars_map_checker(game) == 1)
 		return (1);
 	return (0);
 }
@@ -50,6 +97,10 @@ void	get_map(t_game *game, char *av)
 	(game->map)->ber = ft_split(read_map, '\n');
 	if (!read_map || map_checker(game) == 1)
 	{
-		
+		if (read_map)
+			free_map(&game->map);
+		free(read_map);
+		error_list(2);
 	}
+	free(read_map);
 }
