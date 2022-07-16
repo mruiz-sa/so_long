@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 10:16:49 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/16 17:19:35 by mruiz-sa         ###   ########.fr       */
+/*   Created: 2022/04/11 17:29:25 by mruiz-sa          #+#    #+#             */
+/*   Updated: 2022/07/16 17:47:41 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/so_long.h"
-#include "minilibx/mlx.h"
+#include<unistd.h>
 
-void	so_long(char *av)
+void	*ft_calloc(size_t count, size_t size)
 {
-	t_game	game;
+	void	*ptr;
 
-	get_map(&game, av);
-}
-
-int	main(int ac, char **av)
-{
-	if (ac != 2)
-		error_list(1);
-	else
-		so_long(av[1]);
-	exit(0);
+	ptr = (void *)malloc(size * count);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, count * size);
+	return (ptr);
 }

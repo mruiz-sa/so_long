@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 10:16:49 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/16 17:19:35 by mruiz-sa         ###   ########.fr       */
+/*   Created: 2022/04/15 11:06:47 by mruiz-sa          #+#    #+#             */
+/*   Updated: 2022/07/16 18:05:04 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/so_long.h"
-#include "minilibx/mlx.h"
+#include<unistd.h>
 
-void	so_long(char *av)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	t_game	game;
+	char	*str;
+	size_t	i;
+	size_t	j;
 
-	get_map(&game, av);
-}
-
-int	main(int ac, char **av)
-{
-	if (ac != 2)
-		error_list(1);
-	else
-		so_long(av[1]);
-	exit(0);
+	i = 0;
+	j = 0;
+	if (!s)
+		return (NULL);
+	if (len > ft_strlen(s))
+		len = ft_strlen(s);
+	str = (char *)malloc(sizeof(*s) * (len + 1));
+	if (!str)
+		return (NULL);
+	while (s[i])
+	{
+		if (i >= start && j < len)
+		{
+			str[j] = s[i];
+			j++;
+		}
+		i++;
+	}
+	str[j] = '\0';
+	return (str);
 }

@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   error_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 10:16:49 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/16 17:19:35 by mruiz-sa         ###   ########.fr       */
+/*   Created: 2022/07/14 12:27:00 by mruiz-sa          #+#    #+#             */
+/*   Updated: 2022/07/16 19:23:13 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/so_long.h"
-#include "minilibx/mlx.h"
+#include<unistd.h>
+#include<stdlib.h>
 
-void	so_long(char *av)
+void	error_list(int code)
 {
-	t_game	game;
-
-	get_map(&game, av);
-}
-
-int	main(int ac, char **av)
-{
-	if (ac != 2)
-		error_list(1);
-	else
-		so_long(av[1]);
-	exit(0);
+	if (code == 1)
+	{
+		write(1, "Error\nExpected *.ber\n", 21);
+		exit(0);
+	}
 }

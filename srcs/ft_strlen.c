@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 10:16:49 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/16 17:19:35 by mruiz-sa         ###   ########.fr       */
+/*   Created: 2022/06/11 17:28:54 by marvin            #+#    #+#             */
+/*   Updated: 2022/07/16 18:04:14 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/so_long.h"
-#include "minilibx/mlx.h"
+#include<unistd.h>
 
-void	so_long(char *av)
+size_t	ft_strlen(const char *str)
 {
-	t_game	game;
+	size_t	i;
 
-	get_map(&game, av);
-}
-
-int	main(int ac, char **av)
-{
-	if (ac != 2)
-		error_list(1);
-	else
-		so_long(av[1]);
-	exit(0);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
