@@ -6,14 +6,13 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:14:51 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/17 21:51:53 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/17 22:07:51 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 #include<fcntl.h>
 #include<stdlib.h>
-#include<stdio.h>
 
 void	free_map(t_map **map)
 {
