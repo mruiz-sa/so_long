@@ -6,11 +6,12 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:29:25 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/16 17:47:41 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/17 21:39:32 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
+#include "../include/so_long.h"
+#include<stdlib.h>
 
 void	*ft_calloc(size_t count, size_t size)
 {

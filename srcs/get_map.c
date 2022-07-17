@@ -6,26 +6,27 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:14:51 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/16 20:10:12 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/17 21:51:53 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 #include<fcntl.h>
 #include<stdlib.h>
+#include<stdio.h>
 
-void	free_map(t_game	*game)
+void	free_map(t_map **map)
 {
 	int	i;
 
 	i = 0;
-	while ((game->map)->ber[i])
+	while ((*map)->ber[i])
 	{
-		free((game->map)->ber[i]);
+		free((*map)->ber[i]);
 		i++;
 	}
-	free((game->map)->ber);
-	free(game->map);
+	free((*map)->ber);
+	free(*map);
 }
 
 int	chars_map_checker(char *str, int row, int width)
@@ -41,8 +42,8 @@ int	chars_map_checker(char *str, int row, int width)
 			return (1);
 		if (row == 1 && ((str[0] != '1') || (str[width - 1] != '1')))
 			return (1);
-		if (str[i] != '0' || str[i] != '1' || str[i] != 'C' || str[i] != 'E' ||
-			str[i] != 'P' || str[i] != 'T')
+		if (str[i] != '0' || str[i] != '1' || str[i] != 'C' || str[i] != 'E'
+			|| str[i] != 'P' || str[i] != 'T')
 			return (1);
 		if (str[i] == 'P')
 			player_nbr++;
@@ -69,10 +70,13 @@ int	map_checker(t_game *game)
 			row = 1;
 		else
 			row = 2;
-		if (chars_map_checker((game->map)->ber[(game->map)->height], row, (game->map)->width) == 1)
+		if (chars_map_checker((game->map)->ber[(game->map)->height], row,
+				(game->map)->width) == 1)
 			return (1);
 		(game->map)->height++;
 	}
+	printf("%d\n", game->map->height);
+	printf("%d\n", game->map->width);
 	if ((game->map)->height <= 2)
 		return (1);
 	return (0);
@@ -85,7 +89,7 @@ void	get_map(t_game *game, char *av)
 	int		fd;
 
 	game->map = calloc(1, sizeof(t_map));
-	fd = open(av[1], O_RDONLY);
+	fd = open(av, O_RDONLY);
 	read_map = 0;
 	line = get_next_line(fd);
 	while (line)

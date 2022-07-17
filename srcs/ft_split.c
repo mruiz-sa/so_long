@@ -6,11 +6,11 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 11:18:18 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/16 19:45:27 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/17 21:39:45 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 #include<unistd.h>
 
 static int	ft_number_of_words(const char *s, char c)

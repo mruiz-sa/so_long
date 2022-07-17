@@ -1,42 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 11:06:47 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/17 21:39:53 by mruiz-sa         ###   ########.fr       */
+/*   Created: 2022/04/02 16:53:29 by mruiz-sa          #+#    #+#             */
+/*   Updated: 2022/07/17 20:57:50 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
-#include<unistd.h>
+#include<stdlib.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_bzero(void *s, size_t n)
 {
-	char	*str;
 	size_t	i;
-	size_t	j;
+	char	*aux;
 
+	aux = (char *)s;
 	i = 0;
-	j = 0;
-	if (!s)
-		return (NULL);
-	if (len > ft_strlen(s))
-		len = ft_strlen(s);
-	str = (char *)malloc(sizeof(*s) * (len + 1));
-	if (!str)
-		return (NULL);
-	while (s[i])
+	while (i < n)
 	{
-		if (i >= start && j < len)
-		{
-			str[j] = s[i];
-			j++;
-		}
+		aux[i] = 0;
 		i++;
 	}
-	str[j] = '\0';
-	return (str);
 }

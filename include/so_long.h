@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:24:27 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/16 19:58:46 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/17 21:36:37 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_game {
 void	get_map(t_game *game, char *av);
 void	error_list(int code);
 void	*ft_calloc(size_t count, size_t size);
+void	ft_bzero(void *s, size_t n);
 char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);

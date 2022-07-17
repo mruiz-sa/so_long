@@ -6,11 +6,11 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 11:28:17 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/16 19:47:27 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/17 21:47:45 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../../include/get_next_line.h"
 
 char	*ft_strchr(char *s, int c)
 {

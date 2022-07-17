@@ -6,11 +6,11 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 11:27:53 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/16 17:39:25 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/17 21:47:47 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../../include/get_next_line.h"
 #define BUFFER_SIZE 100
 
 char	*ft_cut_line(char *save)

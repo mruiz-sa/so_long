@@ -6,13 +6,22 @@
 #    By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/31 19:11:27 by mruiz-sa          #+#    #+#              #
-#    Updated: 2022/07/16 19:53:59 by mruiz-sa         ###   ########.fr        #
+#    Updated: 2022/07/17 21:35:59 by mruiz-sa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-SRC = so_long.c \
-		error_list.c
+SRC = ./so_long.c \
+		./srcs/error_list.c \
+		./srcs/ft_bzero.c \
+		./srcs/ft_calloc.c \
+		./srcs/ft_split.c \
+		./srcs/ft_strlen.c \
+		./srcs/ft_substr.c \
+		./srcs/get_map.c \
+		./srcs/get_next_line/get_next_line.c \
+		./srcs/get_next_line/get_next_line_utils.c
+		
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g3
 LINKS = -Lminilibx -lmlx -framework OpenGL -framework AppKit
