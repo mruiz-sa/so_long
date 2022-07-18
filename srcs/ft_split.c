@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 11:18:18 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/17 21:39:45 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/18 10:19:31 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	**ft_splitter(const char *s, char c)
 			start = i;
 		else if (start >= 0 && (s[i] == c || i == len))
 		{
-			split[j++] = ft_substr(s, start, i - start);
+			split[j++] = ft_substr(s, start, (i - start) + 1);
 			start = -1;
 		}
 	}

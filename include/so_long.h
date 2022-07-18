@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:24:27 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/17 21:36:37 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/18 10:53:34 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ void	ft_bzero(void *s, size_t n);
 char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+void	free_map(t_map **map);
 
 #endif
