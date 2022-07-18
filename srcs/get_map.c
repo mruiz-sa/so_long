@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:14:51 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/18 11:58:23 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/18 12:12:30 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ void	get_map(t_game *game, char *av)
 
 	game->map = calloc(1, sizeof(t_map));
 	fd = open(av, O_RDONLY);
+	if (fd == -1)
+		error_list(3);
 	read_map = 0;
 	line = get_next_line(fd);
 	while (line)
