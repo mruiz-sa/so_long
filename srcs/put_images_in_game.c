@@ -6,18 +6,11 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 11:02:37 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/25 13:02:06 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/25 19:04:48 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-void	put_collectables(t_game *game, int height, int width)
-{
-	mlx_put_image_to_window(game->mlx, game->mlx_window,
-		game->collectables, width * 64, height * 64);
-	game->collectable_count++;
-}
 
 void	put_images_in_game(t_game *game)
 {
@@ -36,6 +29,25 @@ void	put_images_in_game(t_game *game)
 			"images/exit.xpm", &x, &y);
 }
 
+void	put_items(t_game *game, int height, int width)
+{
+	if ((game->map)->ber[height][width] == '1')
+		mlx_put_image_to_window(game->mlx, game->mlx_window,
+			game->wall, width * 64, height * 64);
+	if ((game->map)->ber[height][width] == 'E')
+		mlx_put_image_to_window(game->mlx, game->mlx_window,
+			game->exit, width * 64, height * 64);
+	if ((game->map)->ber[height][width] == 'P')
+		mlx_put_image_to_window(game->mlx, game->mlx_window,
+			game->player, width * 64, height * 64);
+	if ((game->map)->ber[height][width] == 'C')
+	{
+		mlx_put_image_to_window(game->mlx, game->mlx_window,
+			game->collectables, width * 64, height * 64);
+		game->collectable_count++;
+	}
+}
+
 void	convert_images(t_game *game)
 {
 	int	height;
@@ -50,17 +62,7 @@ void	convert_images(t_game *game)
 		{
 			mlx_put_image_to_window(game->mlx, game->mlx_window,
 				game->floor, width * 64, height * 64);
-			if ((game->map)->ber[height][width] == '1')
-				mlx_put_image_to_window(game->mlx, game->mlx_window,
-					game->wall, width * 64, height * 64);
-			if ((game->map)->ber[height][width] == 'E')
-				mlx_put_image_to_window(game->mlx, game->mlx_window,
-					game->exit, width * 64, height * 64);
-			if ((game->map)->ber[height][width] == 'P')
-				mlx_put_image_to_window(game->mlx, game->mlx_window,
-					game->player, width * 64, height * 64);
-			if ((game->map)->ber[height][width] == 'C')
-				put_collectables(game, height, width);
+			put_items(game, height, width);
 			width++;
 		}
 		height++;
