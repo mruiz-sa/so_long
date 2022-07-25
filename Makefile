@@ -6,7 +6,7 @@
 #    By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/31 19:11:27 by mruiz-sa          #+#    #+#              #
-#    Updated: 2022/07/18 10:53:51 by mruiz-sa         ###   ########.fr        #
+#    Updated: 2022/07/25 11:02:25 by mruiz-sa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC = ./so_long.c \
 		./srcs/ft_substr.c \
 		./srcs/get_map.c \
 		./srcs/free_map.c \
+		./srcs/put_images_in_game.c \
 		./srcs/get_next_line/get_next_line.c \
 		./srcs/get_next_line/get_next_line_utils.c
 		

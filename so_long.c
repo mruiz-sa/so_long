@@ -6,13 +6,12 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:16:49 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/18 12:21:09 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/25 12:06:34 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./include/so_long.h"
 #include "minilibx/mlx.h"
-#include<stdio.h>
 
 void	extension_checker(char *str)
 {
@@ -33,6 +32,10 @@ void	so_long(char *av)
 	game.mlx = mlx_init();
 	game.mlx_window = mlx_new_window(game.mlx,
 			game.map->width * 64, game.map->height * 64, "so_long");
+	put_images_in_game(&game);
+	convert_images(&game);
+	mlx_hook(game.mlx_window, 17, 0, (void *)exit, 0);
+	mlx_loop(game.mlx);
 }
 
 int	main(int ac, char **av)
