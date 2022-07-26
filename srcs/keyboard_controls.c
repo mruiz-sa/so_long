@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 11:08:38 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/26 14:19:40 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/26 14:29:55 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	w_s_keys(t_game *game, int key)
 
 int	keyboard_controls(int key, t_game *game)
 {
-	int	move;
+	int		move;
 
 	if (key == 53)
 		free_and_exit(game);
