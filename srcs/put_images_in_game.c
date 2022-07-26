@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 11:02:37 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/25 19:04:48 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/26 12:15:42 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,12 @@ void	put_items(t_game *game, int height, int width)
 		mlx_put_image_to_window(game->mlx, game->mlx_window,
 			game->exit, width * 64, height * 64);
 	if ((game->map)->ber[height][width] == 'P')
+	{
 		mlx_put_image_to_window(game->mlx, game->mlx_window,
 			game->player, width * 64, height * 64);
+		game->player_x = width;
+		game->player_y = height;
+	}
 	if ((game->map)->ber[height][width] == 'C')
 	{
 		mlx_put_image_to_window(game->mlx, game->mlx_window,

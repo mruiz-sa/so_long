@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:14:51 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/18 12:12:30 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:22:02 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	map_checker(t_game *game)
 	return (0);
 }
 
-int	elements_checker(char *str)
+int	char_checker(char *str)
 {
 	int	i;
 	int	p;
@@ -93,29 +93,28 @@ int	elements_checker(char *str)
 
 void	get_map(t_game *game, char *av)
 {
-	char	*line;
-	char	*read_map;
-	int		fd;
+	t_reading_map	read;
 
 	game->map = calloc(1, sizeof(t_map));
-	fd = open(av, O_RDONLY);
-	if (fd == -1)
+	read.fd = open(av, O_RDONLY);
+	if (read.fd == -1)
 		error_list(3);
-	read_map = 0;
-	line = get_next_line(fd);
-	while (line)
+	read.read_map = 0;
+	read.line = get_next_line(read.fd);
+	while (read.line)
 	{
-		read_map = ft_strjoin(read_map, line);
-		free(line);
-		line = get_next_line(fd);
+		read.read_map = ft_strjoin(read.read_map, read.line);
+		free(read.line);
+		read.line = get_next_line(read.fd);
 	}
-	(game->map)->ber = ft_split(read_map, '\n');
-	if (!read_map || map_checker(game) == 1 || elements_checker(read_map) == 1)
+	free(read.line);
+	(game->map)->ber = ft_split(read.read_map, '\n');
+	if (!read.read_map || map_checker(game) || char_checker(read.read_map))
 	{
-		if (read_map)
+		if (read.read_map)
 			free_map(&game->map);
-		free(read_map);
+		free(read.read_map);
 		error_list(2);
 	}
-	free(read_map);
+	free(read.read_map);
 }

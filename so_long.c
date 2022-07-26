@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:16:49 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/25 19:07:42 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/26 14:14:01 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ void	extension_checker(char *str)
 {
 	int	i;
 
-	i = ft_strlen(str);
-	i--;
+	i = ft_strlen(str) - 1;
 	if (str[i] != 'r' || str[i - 1] != 'e' || str[i - 2] != 'b'
 		|| str[i - 3] != '.')
 		error_list(4);
@@ -34,6 +33,9 @@ void	so_long(char *av)
 			game.map->width * 64, game.map->height * 64, "so_long");
 	put_images_in_game(&game);
 	convert_images(&game);
+	game.moves_count = 0;
+	printf("Steps: %d\n", game.moves_count);
+	mlx_key_hook(game.mlx_window, keyboard_controls, &game);
 	mlx_hook(game.mlx_window, 17, 0, (void *)exit, 0);
 	mlx_loop(game.mlx);
 }
