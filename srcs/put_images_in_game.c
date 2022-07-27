@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 11:02:37 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/26 12:15:42 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/27 20:20:32 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,18 @@
 
 void	put_images_in_game(t_game *game)
 {
-	int	x;
-	int	y;
-
 	game->player = mlx_xpm_file_to_image(game->mlx,
-			"images/front_player.xpm", &x, &y);
+			"img/fr.xpm", &game->player_x, &game->player_y);
+	game->enemy = mlx_xpm_file_to_image(game->mlx,
+			"img/enemy.xpm", &game->player_x, &game->player_y);
 	game->collectables = mlx_xpm_file_to_image(game->mlx,
-			"images/collectables.xpm", &x, &y);
+			"img/collectables.xpm", &game->player_x, &game->player_y);
 	game->floor = mlx_xpm_file_to_image(game->mlx,
-			"images/floor.xpm", &x, &y);
+			"img/floor.xpm", &game->player_x, &game->player_y);
 	game->wall = mlx_xpm_file_to_image(game->mlx,
-			"images/wall.xpm", &x, &y);
+			"img/wall.xpm", &game->player_x, &game->player_y);
 	game->exit = mlx_xpm_file_to_image(game->mlx,
-			"images/exit.xpm", &x, &y);
+			"img/exit.xpm", &game->player_x, &game->player_y);
 }
 
 void	put_items(t_game *game, int height, int width)
@@ -50,6 +49,9 @@ void	put_items(t_game *game, int height, int width)
 			game->collectables, width * 64, height * 64);
 		game->collectable_count++;
 	}
+	if ((game->map)->ber[height][width] == 'T')
+		mlx_put_image_to_window(game->mlx, game->mlx_window,
+			game->enemy, width * 64, height * 64);
 }
 
 void	convert_images(t_game *game)

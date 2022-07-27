@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 11:08:38 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/26 14:29:55 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/27 19:26:31 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	move_checker(t_game *game, int x, int y)
 {
-	if ((game->map)->ber[y][x] == '0')
+	if ((game->map)->ber[y][x] == '0' || (game->map)->ber[y][x] == 'C')
 	{
 		(game->map)->ber[y][x] = 'P';
 		game->player_x = x;
@@ -22,18 +22,17 @@ int	move_checker(t_game *game, int x, int y)
 		game->moves_count++;
 	}
 	if ((game->map)->ber[y][x] == 'C')
-	{
-		(game->map)->ber[y][x] = 'P';
-		game->player_x = x;
-		game->player_y = y;
-		game->moves_count++;
 		game->collectable_count--;
-	}
 	if ((game->map)->ber[y][x] == 'E')
 	{
 		if (game->collectable_count != 0)
 			return (0);
 		printf("¡ALL \e[31m\e[1mPOKEBALLS\e[0m RECOLECTED, WELL DONE!\n");
+		free_and_exit(game);
+	}
+	if ((game->map)->ber[y][x] == 'T')
+	{
+		printf("\e[31m\e[1mGAME OVER\e[0m\n");
 		free_and_exit(game);
 	}
 	return (1);
@@ -48,21 +47,21 @@ int	a_d_keys(t_game *game, int key)
 	y = game->player_y;
 	if (key == 0)
 	{
-		x--;
-		if ((game->map)->ber[y][x] == '1')
+		if ((game->map)->ber[y][--x] == '1')
 			return (0);
 		if (move_checker(game, x, y) == 0)
 			return (0);
 		(game->map)->ber[y][x + 1] = '0';
+		game->player = mlx_xpm_file_to_image(game->mlx, "img/le.xpm", &x, &y);
 	}
 	else if (key == 2)
 	{
-		x++;
-		if ((game->map)->ber[y][x] == '1')
+		if ((game->map)->ber[y][++x] == '1')
 			return (0);
 		if (move_checker(game, x, y) == 0)
 			return (0);
 		(game->map)->ber[y][x - 1] = '0';
+		game->player = mlx_xpm_file_to_image(game->mlx, "img/ri.xpm", &x, &y);
 	}
 	return (1);
 }
@@ -76,21 +75,21 @@ int	w_s_keys(t_game *game, int key)
 	y = game->player_y;
 	if (key == 13)
 	{
-		y--;
-		if ((game->map)->ber[y][x] == '1')
+		if ((game->map)->ber[--y][x] == '1')
 			return (0);
 		if (move_checker(game, x, y) == 0)
 			return (0);
 		(game->map)->ber[y + 1][x] = '0';
+		game->player = mlx_xpm_file_to_image(game->mlx, "img/ba.xpm", &x, &y);
 	}
 	else if (key == 1)
 	{
-		y++;
-		if ((game->map)->ber[y][x] == '1')
+		if ((game->map)->ber[++y][x] == '1')
 			return (0);
 		if (move_checker(game, x, y) == 0)
 			return (0);
 		(game->map)->ber[y - 1][x] = '0';
+		game->player = mlx_xpm_file_to_image(game->mlx, "img/fr.xpm", &x, &y);
 	}
 	return (1);
 }

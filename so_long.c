@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:16:49 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/26 14:14:01 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/27 20:28:00 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,37 @@ void	extension_checker(char *str)
 		error_list(4);
 }
 
+void	animations(t_game *game)
+{
+	int	i;
+
+	i++;
+	if (i == 500)
+		game->enemy = mlx_xpm_file_to_image(game->mlx,
+				"img/floor.xpm", &game->player_x, &game->player_y);
+	if (i == 1000)
+	{
+		game->enemy = mlx_xpm_file_to_image(game->mlx,
+				"img/enemy2.xpm", &game->player_x, &game->player_y);
+		i = 0;
+	}
+	convert_images(&game);
+}
+
 void	so_long(char *av)
 {
 	t_game	game;
 
-	get_map(&game, av);
 	game.mlx = mlx_init();
+	get_map(&game, av);
 	game.mlx_window = mlx_new_window(game.mlx,
 			game.map->width * 64, game.map->height * 64, "so_long");
 	put_images_in_game(&game);
 	convert_images(&game);
 	game.moves_count = 0;
-	printf("Steps: %d\n", game.moves_count);
 	mlx_key_hook(game.mlx_window, keyboard_controls, &game);
 	mlx_hook(game.mlx_window, 17, 0, (void *)exit, 0);
+	mlx_loop_hook(game.mlx, animations, void *param);
 	mlx_loop(game.mlx);
 }
 

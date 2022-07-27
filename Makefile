@@ -6,7 +6,7 @@
 #    By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/31 19:11:27 by mruiz-sa          #+#    #+#              #
-#    Updated: 2022/07/26 11:33:13 by mruiz-sa         ###   ########.fr        #
+#    Updated: 2022/07/27 18:01:11 by mruiz-sa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,20 +37,18 @@ $(NAME): $(OBJECTS)
 		@echo "\n\033[92m"-------------\\n👌 COMPILED 👌\\n-------------\\n"\033[0m\n"
 
 all: $(NAME)
-run: all
-	@clear
-	@./so_long.o maps/map.ber
+
 clean: 
-		@clear
-		@echo "\n\033[31m"-------------------\\n💣 DELETED FILES 💣\\n-------------------\\n"\033[0m\n"
-		@rm -f $(OBJECTS)
+	@clear
+	@echo "\n\033[31m"-------------------\\n💣 DELETED FILES 💣\\n-------------------\\n"\033[0m\n"
+	@rm -f $(OBJECTS)
 
 fclean: clean
-		make clean -C ./minilibx
-		@rm -rf $(NAME)
-		@rm -rf so_long
-		@rm -rf libmlx.a
+	@make clean -C ./minilibx
+	@rm -rf $(NAME)
+	@rm -rf so_long
+	@rm -rf libmlx.a
 
 re: fclean all
 
-.PHONY: all clean re run
+.PHONY: all clean re

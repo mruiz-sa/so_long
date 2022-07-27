@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:24:27 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/26 12:42:54 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/27 18:56:45 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@
 # include "get_next_line.h"
 # include<stdlib.h>
 
-# define ESC 53
+# define ESC	53
+# define A		0
+# define S		1
+# define D		2
+# define W		13
 
 typedef struct s_reading_map{
 	char	*line;
@@ -37,6 +41,7 @@ typedef struct s_game {
 	void	*mlx_window;
 	t_map	*map;
 	void	*player;
+	void	*enemy;
 	void	*collectables;
 	void	*collectable_count;
 	void	*floor;
