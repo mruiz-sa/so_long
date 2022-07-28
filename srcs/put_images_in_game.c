@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 11:02:37 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/28 17:46:01 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/28 18:05:39 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	put_images_in_game(t_game *game)
 {
 	game->player = mlx_xpm_file_to_image(game->mlx,
 			"img/fr.xpm", &game->player_x, &game->player_y);
-	game->enemy = mlx_xpm_file_to_image(game->mlx,
-			"img/enemy.xpm", &game->player_x, &game->player_y);
 	game->collectables = mlx_xpm_file_to_image(game->mlx,
 			"img/collectables.xpm", &game->player_x, &game->player_y);
 	game->floor = mlx_xpm_file_to_image(game->mlx,
@@ -49,9 +47,6 @@ void	put_items(t_game *game, int height, int width)
 			game->collectables, width * 64, height * 64);
 		game->collectable_count++;
 	}
-	if ((game->map)->ber[height][width] == 'T')
-		mlx_put_image_to_window(game->mlx, game->mlx_window,
-			game->enemy, width * 64, height * 64);
 }
 
 void	convert_images(t_game *game)
@@ -74,45 +69,3 @@ void	convert_images(t_game *game)
 		height++;
 	}
 }
-
-/* void	convert_enemies(t_game *game, int step)
-{
-	int	x;
-	int	y;
-	int	z;
-
-	z = 0;
-	x = 0;
-	y = 0;
-	while (y < (game->map)->height)
-	{
-		x = 0;
-		while ((game->map)->ber[y][x])
-		{
-			if ((game->map)->ber[y][x] == 'T' && (step % 2 == 0))
-			{
-				printf("%d\n", game->moves_count);
-				printf("aaa\n");
-				z = (game->map)->ber[y][x];
-				(game->map)->ber[y][x] = (game->map)->ber[y][x - 1];
-				(game->map)->ber[y][x - 1] = z;
-				game->enemy = mlx_xpm_file_to_image(game->mlx,
-						"img/enemy2.xpm", &game->player_x, &game->player_y);
-				convert_images(game);
-			}
-			else if ((game->map)->ber[y][x] == 'T' && (step % 2 != 0))
-			{
-				printf("%d\n", game->moves_count);
-				printf("dentro\n");
-				z = (game->map)->ber[y][x];
-				(game->map)->ber[y][x] = (game->map)->ber[y][x + 1];
-				(game->map)->ber[y][x + 1] = z;
-				game->enemy = mlx_xpm_file_to_image(game->mlx,
-						"img/enemy2.xpm", &game->player_x, &game->player_y);
-				convert_images(game);
-			}
-			x++;
-		}
-		y++;
-	}
-} */

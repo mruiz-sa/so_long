@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:14:51 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/26 13:22:02 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/28 18:52:28 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	wall_map_checker(char *str, int row, int width)
 		if (row == 1 && ((str[0] != '1') || (str[width - 1] != '1')))
 			return (1);
 		if (str[i] != '0' && str[i] != '1' && str[i] != 'C' && str[i] != 'E'
-			&& str[i] != 'P' && str[i] != 'T' && str[i] != '\n')
+			&& str[i] != 'P' && str[i] != '\n')
 			return (1);
 		i++;
 	}
@@ -91,6 +91,18 @@ int	char_checker(char *str)
 	return (0);
 }
 
+char	*modify_map(char *map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		i++;
+	map[i] = '\n';
+	map[i + 1] = '\0';
+	return (map);
+}
+
 void	get_map(t_game *game, char *av)
 {
 	t_reading_map	read;
@@ -108,6 +120,7 @@ void	get_map(t_game *game, char *av)
 		read.line = get_next_line(read.fd);
 	}
 	free(read.line);
+	read.read_map = modify_map(read.read_map);
 	(game->map)->ber = ft_split(read.read_map, '\n');
 	if (!read.read_map || map_checker(game) || char_checker(read.read_map))
 	{

@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:24:27 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/28 13:09:38 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/28 18:06:09 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 void	free_map(t_map **map);
 void	free_and_exit(t_game *game);
 void	convert_images(t_game *game);
-void	convert_enemies(t_game *game, int step);
-void	convert_player(t_game *game);
 void	put_images_in_game(t_game *game);
 int		keyboard_controls(int key, t_game *game);
 
