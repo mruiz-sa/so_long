@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 11:02:37 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/28 14:23:33 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/28 17:46:01 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	convert_images(t_game *game)
 	}
 }
 
-void	convert_enemies(t_game *game, int step)
+/* void	convert_enemies(t_game *game, int step)
 {
 	int	x;
 	int	y;
@@ -115,4 +115,4 @@ void	convert_enemies(t_game *game, int step)
 		}
 		y++;
 	}
-}
+} */

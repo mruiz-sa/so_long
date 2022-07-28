@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:16:49 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/28 14:14:00 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/28 17:46:16 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	so_long(char *av)
 			game.map->width * 64, game.map->height * 64, "so_long");
 	game.moves_count = 0;
 	put_images_in_game(&game);
-	convert_enemies(&game, game.moves_count);
+	convert_images(&game);
 	mlx_key_hook(game.mlx_window, keyboard_controls, &game);
 	mlx_hook(game.mlx_window, 17, 0, (void *)exit, 0);
 	mlx_loop(game.mlx);
