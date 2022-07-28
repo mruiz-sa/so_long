@@ -6,11 +6,12 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 11:08:38 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/28 18:07:36 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/28 18:56:46 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+#include<stdio.h>
 
 int	move_checker(t_game *game, int x, int y)
 {
