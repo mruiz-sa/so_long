@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 11:08:38 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/27 19:26:31 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/28 14:10:47 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ int	keyboard_controls(int key, t_game *game)
 	if (move)
 	{
 		convert_images(game);
+		convert_enemies(game, game->moves_count);
 		printf("Steps: %d\n", game->moves_count);
 	}
 	return (1);

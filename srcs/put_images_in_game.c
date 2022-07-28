@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 11:02:37 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/27 20:20:32 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/28 14:23:33 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,47 @@ void	convert_images(t_game *game)
 			width++;
 		}
 		height++;
+	}
+}
+
+void	convert_enemies(t_game *game, int step)
+{
+	int	x;
+	int	y;
+	int	z;
+
+	z = 0;
+	x = 0;
+	y = 0;
+	while (y < (game->map)->height)
+	{
+		x = 0;
+		while ((game->map)->ber[y][x])
+		{
+			if ((game->map)->ber[y][x] == 'T' && (step % 2 == 0))
+			{
+				printf("%d\n", game->moves_count);
+				printf("aaa\n");
+				z = (game->map)->ber[y][x];
+				(game->map)->ber[y][x] = (game->map)->ber[y][x - 1];
+				(game->map)->ber[y][x - 1] = z;
+				game->enemy = mlx_xpm_file_to_image(game->mlx,
+						"img/enemy2.xpm", &game->player_x, &game->player_y);
+				convert_images(game);
+			}
+			else if ((game->map)->ber[y][x] == 'T' && (step % 2 != 0))
+			{
+				printf("%d\n", game->moves_count);
+				printf("dentro\n");
+				z = (game->map)->ber[y][x];
+				(game->map)->ber[y][x] = (game->map)->ber[y][x + 1];
+				(game->map)->ber[y][x + 1] = z;
+				game->enemy = mlx_xpm_file_to_image(game->mlx,
+						"img/enemy2.xpm", &game->player_x, &game->player_y);
+				convert_images(game);
+			}
+			x++;
+		}
+		y++;
 	}
 }
