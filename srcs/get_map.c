@@ -6,7 +6,7 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:14:51 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/29 10:30:47 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/29 12:08:07 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	wall_map_checker(char *str, int row, int width)
 	player_nbr = 0;
 	while (str[i])
 	{
-		if ((row == 0 || row == 2) && str[i] != '1' && i < (width - 1))
+		if ((row == 0 || row == 2) && str[i] != '1' && i < (width))
 			return (1);
 		if (row == 1 && ((str[0] != '1') || (str[width - 1] != '1')))
 			return (1);
