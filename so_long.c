@@ -6,13 +6,12 @@
 /*   By: mruiz-sa <mruiz-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:16:49 by mruiz-sa          #+#    #+#             */
-/*   Updated: 2022/07/29 10:53:53 by mruiz-sa         ###   ########.fr       */
+/*   Updated: 2022/07/29 11:03:34 by mruiz-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./include/so_long.h"
 #include "minilibx/mlx.h"
-#include<stdio.h>
 
 void	extension_checker(char *str)
 {
